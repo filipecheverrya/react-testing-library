@@ -24,7 +24,14 @@ function Input({ name, label, ...rest }) {
         defaultValue={defaultValue}
         {...rest}
       />
-      {error && <span className="error">{error}</span>}
+      {error && (
+        <span
+          className="error"
+          aria-label="error-message"
+        >
+          {error}
+        </span>
+      )}
     </fieldset>
   );
 }
