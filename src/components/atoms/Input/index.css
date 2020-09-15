@@ -1,0 +1,27 @@
+.input-container {
+  border: none;
+  padding: 0;
+  padding: 8px 0;
+}
+.input-container input,
+.input-container label,
+.input-container span {
+  display: block; 
+  text-align: left;
+  margin: 0 auto;
+}
+.input-container span {
+  color: #f44336;
+  text-align: left;
+  margin-top: 6px;
+}
+.input-container input {
+  margin-top: 8px;
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 16px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
