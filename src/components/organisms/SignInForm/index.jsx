@@ -1,40 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Form } from '@unform/web';
-import * as Yup from 'yup';
 
 import { Input } from '../../atoms/Input';
 import { Button } from '../../atoms/Button';
 
-function SignInForm() {
-  const formRef = useRef(null);
+function SignInForm({ onSubmit, onRef }) {
 
-  async function handleSubmit(data) {
-    try {
-      formRef.current.setErrors({});
-      const schema = Yup.object().shape({
-        email: Yup.string().email().required(),
-        password: Yup.string().min(4).required(),
-      });
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-      console.log(data);
-    } catch (err) {
-      const validationErrors = {};
-      if (err instanceof Yup.ValidationError) {
-        err.inner.forEach(error => {
-          validationErrors[error.path] = error.message;
-        });
-        formRef.current.setErrors(validationErrors);
-      }
-    }
-  }
-  
   return (
     <>
       <Form
-        onSubmit={handleSubmit}
-        ref={formRef}
+        onSubmit={onSubmit}
+        ref={onRef}
         aria-label="form-signin"
       >
         <Input
