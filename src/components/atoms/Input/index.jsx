@@ -27,6 +27,7 @@ function Input({ name, label, ...rest }) {
       {error && (
         <span
           className="error"
+          // styles={{'display': error ? 'block' : 'none'}}
           aria-label="error-message"
         >
           {error}

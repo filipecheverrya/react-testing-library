@@ -17,18 +17,18 @@ function SignInForm({ onSubmit, onRef }) {
           name="email"
           label="E-mail"
           autoFocus={true}
-          aria-label="email-label"
+          aria-label="email-input"
         />
         <Input
           name="password"
           label="Password"
-          aria-label="password-label"
+          aria-label="password-input"
         />
         <Button
           className="button-primary"
           type="submit"
           style={{ marginTop: '24px' }}
-          aria-label="submit-signin"
+          aria-label="signin-button"
         >
           Sign in
         </Button>
