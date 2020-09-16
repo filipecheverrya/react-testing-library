@@ -1,19 +1,49 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import { Input } from '../../atoms/Input';
 import { Button } from '../../atoms/Button';
 
 import { useStyle } from './styles';
 
-function SignInForm({ onSubmit, onRef }) {
+function SignInForm({ onSubmit }) {
+  const formRef = useRef(null);
   const classes = useStyle();
+
+  async function handleSubmit(data) {
+    try {
+      formRef.current.setErrors({});
+      
+      const schema = Yup.object().shape({
+        email: Yup.string().email().required(),
+        password: Yup.string().min(4).required(),
+      });
+
+      console.log(formRef.current.getErrors());
+      
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      
+      onSubmit(data);
+    } catch (err) {
+      const validationErrors = {};
+      
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+        formRef.current.setErrors(validationErrors);
+      }
+    }
+  }
 
   return (
     <>
       <Form
-        onSubmit={onSubmit}
-        ref={onRef}
+        onSubmit={handleSubmit}
+        ref={formRef}
         aria-label="form-signin"
       >
         <Input
@@ -25,6 +55,7 @@ function SignInForm({ onSubmit, onRef }) {
         />
         <Input
           name="password"
+          type="password"
           label="Password"
           aria-label="password-input"
           className={classes.input}

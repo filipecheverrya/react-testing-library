@@ -21,9 +21,9 @@ function Input({ name, label, ...rest }) {
     <>
       <TextField
         id={fieldName}
-        ref={inputRef}
+        inputRef={inputRef}
         defaultValue={defaultValue}
-        error={error}
+        error={!!error?.length}
         label={label}
         helperText={error?.length ? error : ''}
         fullWidth

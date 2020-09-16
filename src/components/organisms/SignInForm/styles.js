@@ -12,7 +12,8 @@ const useStyle = makeStyles((theme) => ({
   input: {
     display: 'block',
     width: '100%',
-  }
+    marginBottom: '16px',
+  },
 }));
 
 export { useStyle };
