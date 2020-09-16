@@ -8,6 +8,10 @@ const useStyle = makeStyles((theme) => ({
     marginTop: '16px',
     marginBottom: '16px',
     width: '100%',
+  },
+  input: {
+    display: 'block',
+    width: '100%',
   }
 }));
 

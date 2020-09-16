@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
+import { TextField } from '@material-ui/core';
 
-import './index.css';
+// import { useStyle } from './style';
 
 function Input({ name, label, ...rest }) {
+  // const classes = useStyle();
   const inputRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
 
@@ -16,24 +18,18 @@ function Input({ name, label, ...rest }) {
   }, [fieldName, registerField]);
 
   return (
-    <fieldset className="input-container">
-      <label htmlFor={fieldName}>{label}</label>
-      <input
+    <>
+      <TextField
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
+        error={error}
+        label={label}
+        helperText={error?.length ? error : ''}
+        fullWidth
         {...rest}
       />
-      {error && (
-        <span
-          className="error"
-          // styles={{'display': error ? 'block' : 'none'}}
-          aria-label="error-message"
-        >
-          {error}
-        </span>
-      )}
-    </fieldset>
+    </>
   );
 }
 

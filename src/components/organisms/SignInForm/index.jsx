@@ -21,11 +21,13 @@ function SignInForm({ onSubmit, onRef }) {
           label="E-mail"
           autoFocus={true}
           aria-label="email-input"
+          className={classes.input}
         />
         <Input
           name="password"
           label="Password"
           aria-label="password-input"
+          className={classes.input}
         />
         <Button
           variant="contained"
