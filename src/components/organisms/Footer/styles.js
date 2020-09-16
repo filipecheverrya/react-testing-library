@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     width: 'fit-content',
     margin: '0 auto',
+    padding: '16px 0',
   },
   image: {
     maxWidth: '32px',

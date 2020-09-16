@@ -15,8 +15,18 @@ const useStyle = makeStyles((theme) => ({
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
-    minHeight: 'calc(100vh - 88px)',
+    minHeight: '70vh',
   },
+  overline: {
+    textAlign: 'center',
+    width: '100%',
+    display: 'block',
+    marginBottom: '8px',
+  },
+  gridWrapper: {
+    maxWidth: '800px',
+    margin: '32px auto',
+  }
 }));
 
 export { useStyle };
