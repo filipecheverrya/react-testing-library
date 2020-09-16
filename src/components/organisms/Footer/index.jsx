@@ -1,5 +1,7 @@
 import React from "react";
-import { Link, Container, Typography } from '@material-ui/core'
+import { Container, Typography } from '@material-ui/core'
+
+import { Link } from '../../atoms/Link';
 
 import { useStyles } from './styles';
 
@@ -7,7 +9,7 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <Container className="footer">
+    <Container component="footer">
       <Link
         href="https://filipecheverrya.github.io/"
         target="_blank"

@@ -19,8 +19,6 @@ function SignInForm({ onSubmit }) {
         email: Yup.string().email().required(),
         password: Yup.string().min(4).required(),
       });
-
-      console.log(formRef.current.getErrors());
       
       await schema.validate(data, {
         abortEarly: false,
