@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 import * as Yup from 'yup';
+import { Paper, Typography, Container } from '@material-ui/core';
 
 import { Footer } from './components/organisms/Footer';
 import { SignInForm } from './components/organisms/SignInForm';
 
-import './App.css';
+import { useStyle } from './styles'
 
 function App() {
   const formRef = useRef(null);
+  const classes = useStyle();
 
   async function handleSubmit(data) {
     try {
@@ -32,17 +34,19 @@ function App() {
   }
 
   return (
-    <main className="main-container">
-      <section>
-        <div className="title-box">
-          <h1>Post whatever you want anytime you want for FREE</h1>
+    <Container component="main">
+      <div className={classes.contentWrapper}>
+        <div className={classes.titleWrapper}>
+          <Typography variant="h2">
+            Post whatever you want anytime you want for FREE
+          </Typography>
         </div>
-        <div className="form-box">
+        <Paper className={classes.signinBox} elevation={3}>
           <SignInForm onSubmit={handleSubmit} onRef={formRef} />
-        </div>
-      </section>
+        </Paper>
+      </div>
       <Footer />
-    </main>
+    </Container>
   );
 }
 

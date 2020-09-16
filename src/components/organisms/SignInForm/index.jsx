@@ -4,7 +4,10 @@ import { Form } from '@unform/web';
 import { Input } from '../../atoms/Input';
 import { Button } from '../../atoms/Button';
 
+import { useStyle } from './styles';
+
 function SignInForm({ onSubmit, onRef }) {
+  const classes = useStyle();
 
   return (
     <>
@@ -25,9 +28,10 @@ function SignInForm({ onSubmit, onRef }) {
           aria-label="password-input"
         />
         <Button
-          className="button-primary"
+          variant="contained"
           type="submit"
-          style={{ marginTop: '24px' }}
+          color="primary"
+          className={classes.signinButton}
           aria-label="signin-button"
         >
           Sign in
@@ -36,7 +40,9 @@ function SignInForm({ onSubmit, onRef }) {
       <p>
         You don't have account? 
         <Button
-          className="button-link"
+          variant="outlined"
+          color="primary"
+          className={classes.signupButton}
           aria-label="signup-button"
         >
           Sign up
