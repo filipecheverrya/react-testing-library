@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, Typography, Container, Grid } from '@material-ui/core';
 
-import { Footer } from './components/organisms/Footer';
-import { SignInForm } from './components/organisms/SignInForm';
-import { CriticThumbnail } from './components/molecules/CriticThumbnail';
+import { Footer } from './components/Footer';
+import { SignInForm } from './components/SignInForm';
+import { CriticThumbnail } from './components/CriticThumbnail';
+import { CriticDetail }from './components/CriticDetail';
 import { getCritics } from './api';
 
 import { useStyle } from './styles'
 
 function App() {
   const classes = useStyle();
+  const [modalVisibility, setModalVisibility] = useState(false);
 
   function handleLoginData(data) {
-    console.log('<App /> !!! ', data);
+    console.log('Logou certinho!!! ', data);
   }
 
   const [info, setInfo] = useState(null);
@@ -28,12 +30,22 @@ function App() {
     }
   }
 
+  const handleThumbClick = (data) => {
+    console.log(data);
+    setModalVisibility(true);
+  }
+  
+  const handleCloseModal = () => {
+    setModalVisibility(false);
+  }
+
   useEffect(() => {
     handleData();
   }, []);
 
   return (
     <Container component="main">
+      
       <div className={classes.contentWrapper}>
         <div className={classes.titleWrapper}>
           <Typography variant="h2">
@@ -44,17 +56,26 @@ function App() {
           <SignInForm onSubmit={handleLoginData} />
         </Paper>
       </div>
+      
       <Grid container spacing={3} className={classes.gridWrapper}>
         {info?.results.map((item, k) => (
           <Grid item xs={3} key={`key-${k+1}`}>
-            <CriticThumbnail data={item} />
+            <CriticThumbnail
+              data={item}
+              handleClick={() => handleThumbClick(item)}
+            />
           </Grid>
         ))}
       </Grid>
+      
       <Typography variant="overline" className={classes.overline}>
         {info?.copyright}
       </Typography>
+      
       <Footer />
+      
+      <CriticDetail onClose={handleCloseModal} open={modalVisibility} />
+
     </Container>
   );
 }

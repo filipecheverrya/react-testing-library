@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { Input } from '../../atoms/Input';
-import { Button } from '../../atoms/Button';
+import { Input } from '../Input';
+import { Button } from '../Button';
 
 import { useStyle } from './styles';
 

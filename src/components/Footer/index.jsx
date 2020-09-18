@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Typography } from '@material-ui/core'
 
-import { Link } from '../../atoms/Link';
+import { Link } from '../Link';
 
 import { useStyles } from './styles';
 
